@@ -50,8 +50,7 @@ ZSH_THEME="af-magic"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git tmux ssh-agent ruby docker vagrant)
-
+plugins=(git tmux ssh-agent ruby docker vagrant kubectl terraform ansible docker-compose minikube)
 # User configuration
 
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/sbin"
@@ -92,3 +91,17 @@ source $ZSH/oh-my-zsh.sh
 #
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+# Kubernetes Prompt
+if [ -e /usr/local/kube-ps1/kube-ps1.sh ]
+then
+  KUBE_PS1_SYMBOL_ENABLE=false
+  KUBE_PS1_CTX_COLOR='105'
+  KUBE_PS1_NS_COLOR='32'
+  source /usr/local/kube-ps1/kube-ps1.sh
+  RPROMPT='$(kube_ps1)%{$reset_color%}%'
+fi
+
+# Alias for kubens and kubectx
+alias kn="kubens"
+alias kx="kubectx"
