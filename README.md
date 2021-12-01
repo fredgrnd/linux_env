@@ -1,6 +1,6 @@
-# macOS
+# linux config files
 
-My macOS config files
+My Ubuntu Linux config files
 
 * tmux
 * vim
